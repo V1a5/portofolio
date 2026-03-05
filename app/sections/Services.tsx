@@ -1,6 +1,7 @@
 "use client";
 
 import { Code2, Layers, Wrench } from "lucide-react";
+import Image from "next/image";
 
 const serviceCards = [
   {
@@ -32,32 +33,45 @@ const serviceCards = [
 // Kelompokkan skills per kategori (sesuai gambar)
 // Programming Languages: 6 skills pertama
 const programmingLanguages = [
-  { name: "HTML", bg: "bg-gradient-to-br from-orange-300 to-orange-500", image: "html-5.png" },
-  { name: "CSS", bg: "bg-gradient-to-br from-sky-200 to-sky-400", image: "css-3.png" },
-  { name: "JavaScript", bg: "bg-gradient-to-br from-yellow-400 to-amber-600", image: "js.png" },
-  { name: "TypeScript", bg: "bg-gradient-to-br from-blue-400 to-blue-600", image: "typescript.png" },
-  { name: "PHP", bg: "bg-gradient-to-br from-purple-400 to-purple-600", image: "php.png" },
-  { name: "Python", bg: "bg-gradient-to-br from-blue-500 to-indigo-700", image: "python.png" },
+  { name: "HTML", bg: "bg-gradient-to-br from-orange-300 to-orange-500", image: "/html-5.png" },
+  { name: "CSS", bg: "bg-gradient-to-br from-sky-200 to-sky-400", image: "/css-3.png" },
+  { name: "JavaScript", bg: "bg-gradient-to-br from-yellow-400 to-amber-600", image: "/js.png" },
+  { name: "TypeScript", bg: "bg-gradient-to-br from-blue-400 to-blue-600", image: "/typescript.png" },
+  { name: "PHP", bg: "bg-gradient-to-br from-purple-400 to-purple-600", image: "/php.png" },
+  { name: "Python", bg: "bg-gradient-to-br from-blue-500 to-indigo-700", image: "/python.png" },
 ];
 
 // Frameworks & Libraries: 3 skills berikutnya + 3 placeholder
 const frameworksLibraries = [
-  { name: "Next.js", bg: "bg-gradient-to-br from-gray-400 to-gray-900", image: "next-js.png" },
-  { name: "Tailwind", bg: "bg-gradient-to-br from-teal-200 to-cyan-400", image: "tailwind.png" },
-  { name: "Laravel", bg: "bg-gradient-to-br from-red-300 to-orange-500", image: "laravel.png" },
+  { name: "Next.js", bg: "bg-gradient-to-br from-gray-400 to-gray-900", image: "/next-js.png" },
+  { name: "Tailwind", bg: "bg-gradient-to-br from-teal-200 to-cyan-400", image: "/tailwind.png" },
+  { name: "Laravel", bg: "bg-gradient-to-br from-red-300 to-orange-500", image: "/laravel.png" },
 ];
 
 // Tools & Workflow: 3 skills terakhir
 const toolsWorkflow = [
-  { name: "Figma", bg: "bg-gradient-to-br from-pink-400 to-rose-700", image: "figma.png" },
-  { name: "GitHub", bg: "bg-gradient-to-br from-gray-600 to-gray-900", image: "github.png" },
-  { name: "VS Code", bg: "bg-gradient-to-br from-blue-500 to-blue-700", image: "vscode.png" },
-  { name: "Adobe Photoshop", bg: "bg-gradient-to-br from-blue-400 to-blue-800", image: "photoshop.png" },
-  { name: "Adobe Illustrator", bg: "bg-gradient-to-br from-yellow-500 to-orange-700", image: "illustrator.png" },
-  { name: "Laragon", bg: "bg-gradient-to-br from-blue-500 to-blue-700", image: "laragon.png" },
+  { name: "Figma", bg: "bg-gradient-to-br from-pink-400 to-rose-700", image: "/figma.png" },
+  { name: "GitHub", bg: "bg-gradient-to-br from-gray-600 to-gray-900", image: "/github.png" },
+  { name: "VS Code", bg: "bg-gradient-to-br from-blue-500 to-blue-700", image: "/vscode.png" },
+  { name: "Adobe Photoshop", bg: "bg-gradient-to-br from-blue-400 to-blue-800", image: "/photoshop.png" },
+  { name: "Adobe Illustrator", bg: "bg-gradient-to-br from-yellow-500 to-orange-700", image: "/illustrator.png" },
+  { name: "Laragon", bg: "bg-gradient-to-br from-blue-500 to-blue-700", image: "/laragon.png" },
 ];
 
-function SkillGrid({ skills, title, className = "" }) {
+type Skill = {
+  name: string;
+  image: string | null;
+  bg: string;
+  placeholder?: boolean;
+};
+
+type SkillGridProps = {
+  skills: Skill[];
+  title: string;
+  className?: string;
+};
+
+function SkillGrid({ skills, title, className = "" }: SkillGridProps) {
   // gabungkan skills + placeholder jadi satu array
   const fullRow = [
     ...skills,
@@ -85,7 +99,7 @@ function SkillGrid({ skills, title, className = "" }) {
             ) : (
               <>
                 <img
-                  src={skill.image}
+                  src={skill.image || ""}
                   alt={`${skill.name} Icon`}
                   className="w-20 h-20 object-contain mx-auto my-auto"
                 />
