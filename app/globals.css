@@ -1,26 +1,56 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: 0 0% 98%;
+  --foreground: 240 10% 3.9%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
 }
+
+@layer utilities {
+  .gradient-text {
+    background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 50%, #A855F7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-button {
+    background: linear-gradient(135deg, #3B82F6 0%, #6366F1 50%, #8B5CF6 100%);
+  }
+
+  .bg-radial-top-right { background: radial-gradient(circle at top right, #8B5CF6, #8B5CF6, transparent); }
+
+  .bg-radial-bottom-left { background: radial-gradient(circle at bottom left, #06B6D4, #06B6D4, transparent); }
+
+  .bg-radial-top { background: radial-gradient(circle at top center, #06B6D4, #06B6D4, transparent); }
+
+  .bg-radial-left { background: radial-gradient(circle at left, #06B6D4, #06B6D4, transparent); }
+
+  
+  @keyframes scroll-x {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-scroll-x {
+    animation: scroll-x 15s cubic-bezier(0.6, 0.3, 0.95, 0.5) infinite;
+  }
+
+  .animate-scroll-x:hover {
+  animation-play-state: paused;
+  }
+}
+
+
+/* Tambahkan ini di paling bawah */
+/* * {
+  border: 1px solid red !important;
+} */
