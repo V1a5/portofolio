@@ -7,10 +7,10 @@ export function Hero() {
     <section className="w-full px-6 py-12 lg:py-20">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-4 items-center">
         {/* bg blur radial */}
-      <div className="absolute pointer-events-none">
-        <div className="absolute right-[-600] bottom-50 lg:bottom-[-10] lg:right-[-850] w-80 h-80 lg:w-[500px] lg:h-[500px] bg-radial-top rounded-full blur-2xl opacity-15"></div>
-        <div className="absolute top-[-400px] lg:top-[-200] lg:left-[-80] w-80 h-80 lg:w-[700px] lg:h-[400px] bg-radial-left rounded-full blur-2xl opacity-15"></div>
-      </div>
+        <div className="absolute pointer-events-none">
+          <div className="absolute right-[-600] bottom-50 lg:bottom-[-10] lg:right-[-850] w-80 h-80 lg:w-[500px] lg:h-[500px] bg-radial-top rounded-full blur-2xl opacity-15"></div>
+          <div className="absolute top-[-400px] lg:top-[-200] lg:left-[-80] w-80 h-80 lg:w-[700px] lg:h-[400px] bg-radial-left rounded-full blur-2xl opacity-15"></div>
+        </div>
         {/* Left Content */}
         <div className="space-y-6">
           {/* Available Badge */}
@@ -42,13 +42,20 @@ export function Hero() {
 
           {/* CTA Buttons */}
           <div className="flex items-center gap-4 pt-2">
-            <button className="gradient-button hover:opacity-90 text-white rounded-full px-6 py-3 flex items-center gap-2 text-sm font-medium transition-opacity">
+            <a
+              href="/CV Muhammad Vlas.pdf"
+              download
+              className="gradient-button hover:opacity-90 text-white rounded-full px-6 py-3 flex items-center gap-2 text-sm font-medium transition-opacity"
+            >
               <Download className="w-4 h-4" />
               Download CV
-            </button>
-            <button className="rounded-full px-6 py-3 border border-gray-300 hover:bg-gray-50 text-sm font-medium transition-colors">
+            </a>
+            <a
+              href="#projects"
+              className="rounded-full px-6 py-3 border border-gray-300 hover:bg-gray-50 text-sm font-medium transition-colors"
+            >
               View Projects
-            </button>
+            </a>
           </div>
 
           {/* Social Icons */}
