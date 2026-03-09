@@ -41,6 +41,7 @@ export function Contact() {
     email: "",
     subject: "General Inquiry",
     message: "",
+    company: "",
   });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -48,6 +49,24 @@ export function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+
+    if (formData.company) {
+      console.log("Bot detected");
+      return;
+    }
+
+    const emailRegex = /\S+@\S+\.\S+/;
+    if (!emailRegex.test(formData.email)) {
+      toast.error("Invalid email address");
+      setIsLoading(false);
+      return;
+    }
+
+    if (formData.message.length < 10) {
+      toast.error("Message must be at least 10 characters");
+      setIsLoading(false);
+      return;
+    }
 
     try {
       const response = await fetch("/api/send-email", {
@@ -65,6 +84,7 @@ export function Contact() {
           email: "",
           subject: "General Inquiry",
           message: "",
+          company: "",
         });
       } else {
         toast.error("Failed to send email ❌");
@@ -123,6 +143,14 @@ export function Contact() {
           {/* Right Side - Form */}
           <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
             <form onSubmit={handleSubmit} className="space-y-6">
+              <input
+                type="text"
+                name="company"
+                style={{ display: "none" }}
+                onChange={(e) =>
+                  setFormData({ ...formData, company: e.target.value })
+                }
+              />
               {/* Name Row */}
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>

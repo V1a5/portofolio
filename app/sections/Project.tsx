@@ -19,23 +19,23 @@ const projects = [
   {
     id: 2,
     title: "VirtualZone.Id (Electronic E-commerce)",
-    description: "A cross-platform mobile application focused on connecting university students for study groups, events, and academic collaboration.",
-    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop",
+    description: "A modern e‑commerce platform designed for selling electronic products. Built with a focus on clean UI, responsive design, and reusable components. Key features include product catalog, detail pages, shopping cart, secure checkout, and etc.",
+    image: "../vz.png",
     tags: [
-      { name: "Flutter", color: "bg-cyan-100 text-cyan-600" },
-      { name: "Firebase", color: "bg-orange-100 text-orange-600" },
-      { name: "Dart", color: "bg-blue-100 text-blue-600" },
+      { name: "PHP", color: "bg-purple-100 text-purple-600" },
+      { name: "Bootstrap", color: "bg-blue-100 text-blue-600" },
+      { name: "MySQL", color: "bg-sky-100 text-sky-600" },
     ],
   },
   {
     id: 3,
     title: "Uni Book (Bookstore E-commerce)",
-    description: "Complete UI/UX overhaul of the existing university student portal to improve accessibility and mobile responsiveness.",
-    image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&h=600&fit=crop",
+    description: "A modern e‑commerce platform designed for selling books and academic resources. Built with a focus on clean UI, responsive design, and reusable components. Key features include book catalog, detail pages, and shopping cart functionality.",
+    image: "../unibook.png",
     tags: [
-      { name: "Figma", color: "bg-purple-100 text-purple-600" },
-      { name: "UX Research", color: "bg-pink-100 text-pink-600" },
-      { name: "Prototyping", color: "bg-indigo-100 text-indigo-600" },
+      { name: "PHP", color: "bg-purple-100 text-purple-600" },
+      { name: "Bootstrap", color: "bg-blue-100 text-blue-600" },
+      { name: "MySQL", color: "bg-sky-100 text-sky-600" },
     ],
   },
   {
@@ -90,6 +90,7 @@ export function Projects() {
                   {/* <button className="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-md hover:bg-white transition-colors">
                     <Code2 className="w-4 h-4 text-gray-700" />
                   </button> */}
+                  {project.link &&
                   <button className="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-md hover:bg-white transition-colors">
                     <a
                       href={project.link}
@@ -99,14 +100,14 @@ export function Projects() {
                     >
                       <ExternalLink className="w-4 h-4 text-gray-700" />
                     </a>
-                  </button>
+                  </button>}
                 </div>
               </div>
 
               {/* Content */}
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{project.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-2">
+                <p className="text-gray-500 text-sm leading-relaxed mb-4 overflow-y-scroll scrollbar-hide">
                   {project.description}
                 </p>
 
